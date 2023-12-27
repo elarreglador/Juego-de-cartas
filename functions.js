@@ -57,57 +57,65 @@ btnReset.addEventListener('click', () => {
 })
 
 carta1.addEventListener('click', () => {
-    carta1.src = "./img/" + paloCarta1 + ".png";
-    if (todasBocaArriba()) {
-        esVictoria();
-    }
+    carta1.src = "./img/" + baraja[0] + ".png";
+    setTimeout(() => {     // Esperar 100 milisegundos a que la carta cambie src
+        if (todasBocaArriba()) {
+            esVictoria();
+        }
+    }, 100);
 })
 
 carta2.addEventListener('click', () => {
-    carta2.src = "./img/" + paloCarta2 + ".png";
-    if (todasBocaArriba()) {
-        esVictoria();
-    }
+    carta2.src = "./img/" + baraja[1] + ".png";
+    setTimeout(() => {     // Esperar 100 milisegundos a que la carta cambie src
+        if (todasBocaArriba()) {
+            esVictoria();
+        }
+    }, 100);
 })
 
 carta3.addEventListener('click', () => {
-    carta3.src = "./img/" + paloCarta3 + ".png";
-    if (todasBocaArriba()) {
-        esVictoria();
-    }
+    carta3.src = "./img/" + baraja[2] + ".png";
+    setTimeout(() => {     // Esperar 100 milisegundos a que la carta cambie src
+        if (todasBocaArriba()) {
+            esVictoria();
+        }
+    }, 100);
 })
 
 carta4.addEventListener('click', () => {
-    carta4.src = "./img/" + paloCarta4 + ".png";
-    if (todasBocaArriba()) {
-        esVictoria();
-    }
+    carta4.src = "./img/" + baraja[3] + ".png";
+    setTimeout(() => {     // Esperar 100 milisegundos a que la carta cambie src
+        if (todasBocaArriba()) {
+            esVictoria();
+        }
+    }, 100);
 })
 
 carta5.addEventListener('click', () => {
-    carta5.src = "./img/" + paloCarta5 + ".png";
-    if (todasBocaArriba()) {
-        esVictoria();
-    }
+    carta5.src = "./img/" + baraja[4] + ".png";
+    setTimeout(() => {     // Esperar 100 milisegundos a que la carta cambie src
+        if (todasBocaArriba()) {
+            esVictoria();
+        }
+    }, 100);
 })
 
 carta6.addEventListener('click', () => {
-    carta6.src = "./img/" + paloCarta6 + ".png";
-    if (todasBocaArriba()) {
-        esVictoria();
-    }
+    carta6.src = "./img/" + baraja[5] + ".png";
+    setTimeout(() => {     // Esperar 100 milisegundos a que la carta cambie src
+        if (todasBocaArriba()) {
+            esVictoria();
+        }
+    }, 100);
 })
 
 //FUNCIONES
 function asignaValorCartas() {
     //Asigna el valor de cada carta
-    paloCarta1 = num2Palo(rnd(4));
-    paloCarta2 = num2Palo(rnd(4));
-    paloCarta3 = num2Palo(rnd(4));
-    paloCarta4 = num2Palo(rnd(4));
-    paloCarta5 = num2Palo(rnd(4));
-    paloCarta6 = num2Palo(rnd(4));
-    baraja = [paloCarta1, paloCarta2, paloCarta3, paloCarta4, paloCarta5, paloCarta6];
+    for (let i = 0; i < baraja.length; i++) {
+        baraja[i] = num2Palo(rnd(4));
+    }
 }
 
 function cartasBocaAbajo(){
@@ -153,6 +161,7 @@ function esVictoria() {
     muestraBolsa();
     ocultarObjeto(apuesta, false);
     desplegable.disabled = false;
+    cartasBocaAbajo();
 }
 
 function muestraBolsa() {
