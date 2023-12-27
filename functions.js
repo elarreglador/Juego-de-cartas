@@ -22,39 +22,42 @@ let paloCarta6 = 0;
 let baraja = [paloCarta1, paloCarta2, paloCarta3, paloCarta4, paloCarta5, paloCarta6];
 let imgCartas = [carta1, carta2, carta3, carta4, carta5, carta6];
 
-credito = 100;
+let creditoValor = 100;
 
 //MAIN
 //Prepara el juego
-muestraCredito(credito);
+muestraCredito(creditoValor);
 apuesta.value = 100;
 desplegableAdd("bastos");
 desplegableAdd("copas");
 desplegableAdd("espadas");
 desplegableAdd("oros");
 for (let i = 0; i < imgCartas.length; i++) {
-    ocultarObjeto(imgCartas[i],true);
+    ocultarObjeto(imgCartas[i], true);
 }
 
 //LISTENERS
 btnApostar.addEventListener('click', () => {
-    //notificacion(apuesta.value);
     if (apuesta.value < 100) {
         notificacion("La apuesta debe ser minimo 100");
+        return;
+    }
+    if (parseInt(apuesta.value, 10) > creditoValor) {
+        notificacion("Estas intentando apostar mas de lo que tienes.");
         return;
     }
     ocultarObjeto(apuesta, true);
     desplegable.disabled = true;
     asignaValorCartas();
-    
+
     for (let i = 0; i < imgCartas.length; i++) {
-        ocultarObjeto(imgCartas[i],false);
+        ocultarObjeto(imgCartas[i], false);
     }
 })
 
 btnReset.addEventListener('click', () => {
-    credito = 100;
-    muestraCredito();
+    creditoValor = 100;
+    muestraCredito(creditoValor);
     ocultarObjeto(apuesta, false);
     desplegable.disabled = false;
     cartasBocaAbajo();
@@ -123,9 +126,9 @@ function asignaValorCartas() {
     }
 }
 
-function cartasBocaAbajo(){
-    for (let i=0; i<imgCartas.length; i++){
-        imgCartas[i].src="./img/dorso.png";
+function cartasBocaAbajo() {
+    for (let i = 0; i < imgCartas.length; i++) {
+        imgCartas[i].src = "./img/dorso.png";
     }
 }
 
@@ -151,29 +154,31 @@ function esVictoria() {
 
     //iteramos sobre las cartas
     for (let i = 0; i < baraja.length; i++) {
-        //notificacion(miApuesta + " Vs " + baraja[i]);
         if (miApuesta == baraja[i]) {
             exitos++
         }
     }
     if (exitos > 1) {
         notificacion("Enhorabuena, has ganado con " + exitos + " aciertos.");
-        credito = credito + apuesta.value;
+        creditoValor = creditoValor + parseInt(apuesta.value, 10);
     } else {
-        notificacion(exitos + " acierto(s). Mala suerte, otra vez sera. La banca siempre gana jajajajajjaaja!")
-        credito = credito - apuesta;
+        notificacion(exitos + " acierto(s). Mala suerte, otra vez sera.")
+        creditoValor = creditoValor - parseInt(apuesta.value, 10);
     }
-    muestraCredito();
+    muestraCredito(creditoValor);
     ocultarObjeto(apuesta, false);
     desplegable.disabled = false;
     cartasBocaAbajo();
     for (let i = 0; i < imgCartas.length; i++) {
-        ocultarObjeto(imgCartas[i],true);
+        ocultarObjeto(imgCartas[i], true);
+    }
+    if (creditoValor<100){
+        notificacion("La banca siempre gana jajajajajjaaja!");
     }
 }
 
 function muestraCredito(valor) {
-    credito.in = valor;
+    credito.innerHTML = valor;
 }
 
 function num2Palo(num) {
