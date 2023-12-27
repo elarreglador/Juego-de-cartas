@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<header>
+    <title id="titulo">Titulo</title>
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="./css/photon.min.css">
+</header>
+
+<body>
+    <div class="window">
+        <header class="toolbar toolbar-header">
+        </header>
+        <div class="window-content">
+            <div class="pane-group">
+                <div class="pane-sm sidebar">
+                    <p id="bolsa">CREDITO: 100</p>
+                    <hr style="width: 90%; margin:auto;"> <!-- linea horizontal -->
+                    <p>Apuesta:</p>
+                    <select id="desplegable"></select><br>
+                    <input type="texto" id="apuesta" placeholder="100"><br>
+                    <button id="btnApostar" class="btn btn-positive">Apostar</button>
+                    <button id="btnReset" class="btn btn-positive">Reset</button>
+                </div>
+                <div class="pane" style="text-align: center; background-image: url('./img/tapete.png'); padding: 15px;">
+                    <img id="carta1" src="./img/dorso.png" >
+                    <img id="carta2" src="./img/dorso.png" >
+                    <img id="carta3" src="./img/dorso.png" >
+                    <img id="carta4" src="./img/dorso.png" >
+                    <img id="carta5" src="./img/dorso.png" >
+                    <img id="carta6" src="./img/dorso.png" >
+                </div>
+            </div>
+        </div>
+
+        <footer class="toolbar toolbar-footer">
+            <h1 class="title">
+            </h1>
+        </footer>
+    </div>
+    <x-notification id='notification' timeout="3000"></x-notification>
+    <script src="./functions.js"></script>
+</body>
+</html>
