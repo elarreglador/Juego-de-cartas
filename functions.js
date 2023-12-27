@@ -38,10 +38,11 @@ for (let i = 0; i < imgCartas.length; i++) {
 
 //LISTENERS
 btnApostar.addEventListener('click', () => {
-    if (apuesta.value < 100) {
-        notificacion("La apuesta debe ser minimo 100");
+    if ((apuesta.value < 100) || (apuesta.value > 500)){
+        notificacion("Solo se admiten apuestas de minimo 100 y maximo 500");
         return;
     }
+
     if (parseInt(apuesta.value, 10) > creditoValor) {
         notificacion("Estas intentando apostar mas de lo que tienes.");
         return;
