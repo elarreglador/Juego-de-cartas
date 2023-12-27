@@ -5,7 +5,6 @@ let apuesta = document.getElementById("apuesta");
 let desplegable = document.getElementById("desplegable");
 let btnApostar = document.getElementById("btnApostar");
 let btnReset = document.getElementById("btnReset");
-let notification = document.getElementById("notification");
 
 let carta1 = document.getElementById("carta1");
 let paloCarta1 = 0;
@@ -38,7 +37,7 @@ for (let i = 0; i < imgCartas.length; i++) {
 
 //LISTENERS
 btnApostar.addEventListener('click', () => {
-    if ((apuesta.value < 100) || (apuesta.value > 500)){
+    if ((apuesta.value < 100) || (apuesta.value > 500)) {
         notificacion("Solo se admiten apuestas de minimo 100 y maximo 500");
         return;
     }
@@ -173,7 +172,7 @@ function esVictoria() {
     for (let i = 0; i < imgCartas.length; i++) {
         ocultarObjeto(imgCartas[i], true);
     }
-    if (creditoValor<100){
+    if (creditoValor < 100) {
         notificacion("La banca siempre gana jajajajajjaaja!");
     }
 }
@@ -197,8 +196,12 @@ function num2Palo(num) {
     }
 }
 
+//PENDIENTE DE REVISION
 function notificacion(mensaje) {
-    alert(mensaje);
+    //const aviso = new Notification(mensaje);
+    const notif = document.getElementById('notification');
+    notif.innerText = mensaje;
+    notif.opened = true;
 }
 
 function ocultarObjeto(objeto, booleano) {
