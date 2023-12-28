@@ -162,8 +162,11 @@ function esVictoria() {
         notificacion("Enhorabuena, has ganado con " + exitos + " aciertos.");
         creditoValor = creditoValor + parseInt(apuesta.value, 10);
     } else {
-        notificacion(exitos + " acierto(s). Mala suerte, otra vez sera.")
         creditoValor = creditoValor - parseInt(apuesta.value, 10);
+        if (creditoValor < 100) {
+            notificacion("La banca siempre gana jajajajajjaaja!");
+        }
+        notificacion(exitos + " acierto(s). Mala suerte, otra vez sera.")
     }
     muestraCredito(creditoValor);
     ocultarObjeto(apuesta, false);
@@ -171,9 +174,6 @@ function esVictoria() {
     cartasBocaAbajo();
     for (let i = 0; i < imgCartas.length; i++) {
         ocultarObjeto(imgCartas[i], true);
-    }
-    if (creditoValor < 100) {
-        notificacion("La banca siempre gana jajajajajjaaja!");
     }
 }
 
@@ -198,10 +198,9 @@ function num2Palo(num) {
 
 //PENDIENTE DE REVISION
 function notificacion(mensaje) {
-    //const aviso = new Notification(mensaje);
-    const notif = document.getElementById('notification');
-    notif.innerText = mensaje;
-    notif.opened = true;
+    let notification = document.querySelector("#notification");
+    notification.innerHTML = mensaje;
+    notification.opened = true;
 }
 
 function ocultarObjeto(objeto, booleano) {

@@ -8,7 +8,6 @@
 </header>
 
 <body>
-    <x-notification id='notification' timeout="3000"></x-notification>
     <div class="window">
         <header class="toolbar toolbar-header">
         </header>
@@ -19,7 +18,7 @@
                     <hr style="width: 90%; margin:auto;"> <!-- linea horizontal -->
                     <p>Apuesta:</p>
                     <select id="desplegable"></select><br>
-                    <input type="texto" id="apuesta" placeholder="100"><br>
+                    <input type="number" id="apuesta" placeholder="100"><br>
                     <button id="btnApostar" class="btn btn-positive">Apostar</button>
                     <button id="btnReset" class="btn btn-positive">Reset</button>
                 </div>
@@ -36,8 +35,10 @@
 
         <footer class="toolbar toolbar-footer">
             <h1 class="title">
+                <x-notification id="notification" timeout="3000"></x-notification>
             </h1>
         </footer>
+        
     </div>
     <script src="./functions.js"></script>
 </body>

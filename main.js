@@ -1,15 +1,15 @@
 //deshabilita notificaciones de seguridad
 process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = true;
 
-const { app, BrowserWindow, dialog} = require('electron')
+const { app, BrowserWindow} = require('electron')
 //requisito de dialog
 require('@electron/remote/main').initialize()
 
 function createWindow() {
     // Crea la ventana del navegador.
     let win = new BrowserWindow({
-        width: 1400, //700
-        height: 520,
+        width: 700,
+        height: 550,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false
@@ -20,9 +20,9 @@ function createWindow() {
     // y carga el index.html de la aplicación.
     win.loadFile('index.html')
     //para mostrar en la ventana la herramientas de desarrollo de chrome:
-    win.webContents.openDevTools()
+    //win.webContents.openDevTools()
     //requisito de dialog
-    require("@electron/remote/main").enable(win.webContents) 
+    //require("@electron/remote/main").enable(win.webContents) 
 }
 
 
