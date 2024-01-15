@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html>
 
-<header>
-    <title id="titulo">Cartas</title>
-    <!-- stylesheets -->
-    <link rel="stylesheet" href="./css/photon.min.css">
-</header>
+<head>
+    <meta charset="UTF-8">
+    <title>Cartas</title>
+    <link rel="stylesheet" href="./css/estilos.css">
+    <link rel="stylesheet" href="./css/photon.css">
+    <!--Para usar el tema vainilla debemos incluir los siguientes link-->
+    <meta name="xel-theme" content="node_modules/xel/themes/adwaita.css">
+    <meta name="xel-accent-color" content="blue">
+    <meta name="xel-size" content="medium">
+    <meta name="xel-iconset" content="node_modules/xel/iconsets/material.svg">
+    </link>
+    <!--Necesitamos incluir este fichero js para xel-->
+    <script src="node_modules/xel/xel.js" type="module"></script>
+  </head>
 
 <body>
     <div class="window">
-        <header class="toolbar toolbar-header">
-        </header>
         <div class="window-content">
             <div class="pane-group">
                 <div class="pane-sm sidebar">
@@ -31,14 +38,13 @@
                     <img id="carta6" src="./img/dorso.png" >
                 </div>
             </div>
+            <x-notification id="notification" timeout="3000"></x-notification>
         </div>
 
         <footer class="toolbar toolbar-footer">
             <h1 class="title">
-                <x-notification id="notification" timeout="3000"></x-notification>
             </h1>
         </footer>
-        
     </div>
     <script src="./functions.js"></script>
 </body>
